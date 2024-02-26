@@ -1,4 +1,4 @@
-# Personality Test Application
+# Library Management System  Application
 
 ## Table of Contents
 

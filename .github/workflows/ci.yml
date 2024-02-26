@@ -1,0 +1,87 @@
+# name: CI
+
+# on:
+#   push:
+#     branches:
+#       - master
+
+# env:
+#   PORT: "3001"
+
+# jobs:
+#   lint:
+#     name: Lint Code
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Run Super-Linter
+#         uses: github/super-linter@v4
+#         env:
+#           VALIDATE_ALL_CODEBASE: "false"
+#           DEFAULT_BRANCH: "main"
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+#   test:
+#     name: Run Tests
+#     runs-on: ubuntu-latest
+#     needs: lint
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 16
+
+#       - name: Install Dependencies (Backend)
+#         run: npm install
+#         working-directory: ./src
+
+#       - name: Run Tests (Backend)
+#         run: npm test
+#         working-directory: ./src
+
+#   build:
+#     name: Build Application
+#     runs-on: ubuntu-latest
+#     needs: lint
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 16
+
+#       - name: Install Dependencies (Backend)
+#         run: npm install
+#         working-directory: ./src
+
+#       - name: Build Application (Backend)
+#         run: npm run build
+#         working-directory: ./src
+
+#   deploy:
+#     name: Deploy to Serverless
+#     runs-on: ubuntu-latest
+#     needs: [test, build]
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v2
+
+#       - name: Setup Node.js
+#         uses: actions/setup-node@v2
+#         with:
+#           node-version: 16
+
+#       - name: Install Dependencies (Backend)
+#         run: npm install
+#         working-directory: ./src
+
+#       - name: Deploy to Serverless
+#         run: npx serverless deploy
+#         working-directory: ./src
