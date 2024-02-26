@@ -1,0 +1,13 @@
+service: nodejs-aws-lambda
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+
+functions:
+  api:
+    handler: ./src/dist/src/server.handler
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
