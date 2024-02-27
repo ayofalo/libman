@@ -91,9 +91,7 @@ The service has four major endpoints implemented
 
 - DELETE  "/api/private/v1/admin/borrowers/:borrowerId": This endpoint is used to delete a borrower. 
 
-- DELETE  "/api/private/v1/admin/borrowers/:borrowerId/books/:bookId": This endpoint is used to delete a borrowered book from a borrowers record. Admin 
-
-user access
+- DELETE  "/api/private/v1/admin/borrowers/:borrowerId/books/:bookId": This endpoint is used to delete a borrowered book from a borrowers record. Admin user access
 
 - DELETE   "/api/private/v1/borrowers/:borrowerId/books/:bookId": This endpoint is used to delete a borrowered book from a borrowers record. Borrower user access
  
