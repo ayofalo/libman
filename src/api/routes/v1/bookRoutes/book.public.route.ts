@@ -36,6 +36,21 @@ bookPublicRouter.get('/api/public/v1/books/:authorId', getBooksByAuthorId);
  * /api/public/v1/books:
  *   get:
  *     summary: Retrieve all books.
+ *     parameters:
+ *       - name: page
+ *         in: query
+ *         description: "Page number for pagination (default: 1)"
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           default: 1
+ *       - name: limit
+ *         in: query
+ *         description: "Number of items per page (default: 10)"
+ *         required: false
+ *         schema:
+ *           type: integer
+ *           default: 10
  *     responses:
  *       '200':
  *         description: Books retrieved successfully.
