@@ -1,21 +1,13 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
-// Book Controllers
-
-import { retrieveBook } from "../../../controllers/bookController/retrieveBook";
-
-// Author Controllers
-
-import { retrieveAuthor } from "../../../controllers/authorController/retrieveAuthor";
-import { getBooksByAuthorId } from "../../../controllers/bookController/getBooks";
 
 // Borrower Controllers
 
-import { retrieveBorrowers } from "../../../controllers/borrowerController/retrieveBorrower";
-import { getBorrowedBooksByBorrower } from "../../../controllers/borrowerController/getBorrowedBooksByBorrower";
+import { retrieveBorrowers } from '../../../controllers/borrowerController/retrieveBorrower';
+import { getBorrowedBooksByBorrower } from '../../../controllers/borrowerController/getBorrowedBooksByBorrower';
 
 const borrowerPublicRouter: Router = express.Router();
 
@@ -30,10 +22,7 @@ const borrowerPublicRouter: Router = express.Router();
  *       '404':
  *         description: No borrowers found.
  */
-borrowerPublicRouter.get(
-  "/api/public/v1/api/public/v1/borrowers",
-  retrieveBorrowers
-);
+borrowerPublicRouter.get('/api/public/v1/borrowers', retrieveBorrowers);
 
 /**
  * @swagger
@@ -55,8 +44,8 @@ borrowerPublicRouter.get(
  */
 
 borrowerPublicRouter.get(
-  "/api/public/v1/api/public/v1/:borrowerId/borrowed-books",
-  getBorrowedBooksByBorrower
+  '/api/public/v1/:borrowerId/borrowed-books',
+  getBorrowedBooksByBorrower,
 );
 
 export default borrowerPublicRouter;

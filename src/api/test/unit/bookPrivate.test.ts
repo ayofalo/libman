@@ -1,12 +1,13 @@
 import { describe, it, expect } from "@jest/globals";
 import * as mongoose from "mongoose";
 import request, { Response } from "supertest";
-import app from "../../../server"; // Assuming your Express app is exported as 'app'
+import app from "../../../server";
 import { Book } from "../../models/Book";
 import { Author } from "../../models/Author";
 
-describe("Book routes", () => {
-  let book: Book, author: Author;
+describe("Book Public routes", () => {
+  let book: Book;
+  let author: Author;
 
   beforeEach(async () => {
     author = await Author.create({

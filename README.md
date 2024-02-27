@@ -19,18 +19,18 @@
 
 RESTFUL API for a Fictional Library Management System
 
-A node appliaction that allows users to manage books, authors, and borrowers. The API provides functionality for adding,
+A node application that allows users to manage books, authors, and borrowers. The API provides functionality for adding,
 retrieving, updating, and deleting records. 
 
-The system provides JWT-based authentication to secure access to private endpoints. Pagination was used to optimize backend performance. 
+The API supports key operations, employs JWT-based authentication for security and securing access to protected endpoints.
+
+Pagination was used to optimize backend performance. 
 
 Users are assigned roles and access to some endpoints is based on registered role. The roles include Admin and Borrower roles. 
 
-Documented the API using the OpenAPI specification. Utilized Swagger. 
+Utilized OpenAPI 3.0 for your API documentation!. Leveraged Swagger.  
 
-Cookie based authenication was used because they are provide automatic handling functionality and are less susceptible to certain types of attacks like Cross-Site Request Forgery (CSRF).
-
-Application was deployed serverless on AWS Lambda and API Gateway
+AWS Lambda and API Gateway were used for serverless deployment.
 
 
 Technologies used

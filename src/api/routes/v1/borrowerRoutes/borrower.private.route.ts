@@ -1,16 +1,16 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Borrower Controllers
 
-import { getBorrowers } from "../../../controllers/borrowerController/getBorrowers";
-import { addBorrower } from "../../../controllers/borrowerController/addBorrower";
-import { addBookToBorrowed } from "../../../controllers/borrowerController/updateBorrower"; // to add books borrowed and delete books borrowed
-import { deleteBorrowedBook } from "../../../controllers/borrowerController/deleteBorrowedBook";
-import { deleteBorrower } from "../../../controllers/borrowerController/deleteBorrower";
+import { getBorrowers } from '../../../controllers/borrowerController/getBorrowers';
+import { addBorrower } from '../../../controllers/borrowerController/addBorrower';
+import { addBookToBorrowed } from '../../../controllers/borrowerController/updateBorrower'; // to add books borrowed and delete books borrowed
+import { deleteBorrowedBook } from '../../../controllers/borrowerController/deleteBorrowedBook';
+import { deleteBorrower } from '../../../controllers/borrowerController/deleteBorrower';
 
 const borrowerPrivateRouter: Router = express.Router();
 
@@ -27,6 +27,8 @@ const borrowerPrivateRouter: Router = express.Router();
  *         description: ID of the borrower
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       200:
  *         description: Borrower found and returned successfully
@@ -35,7 +37,7 @@ const borrowerPrivateRouter: Router = express.Router();
  *       500:
  *         description: Internal server error
  */
-borrowerPrivateRouter.get("/api/private/v1/admin/borrowers/:id", getBorrowers);
+borrowerPrivateRouter.get('/api/private/v1/admin/borrowers/:id', getBorrowers);
 
 /**
  * @swagger
@@ -52,6 +54,8 @@ borrowerPrivateRouter.get("/api/private/v1/admin/borrowers/:id", getBorrowers);
  *             properties:
  *               name:
  *                 type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       201:
  *         description: Borrower created successfully
@@ -60,7 +64,7 @@ borrowerPrivateRouter.get("/api/private/v1/admin/borrowers/:id", getBorrowers);
  *       500:
  *         description: Internal server error
  */
-borrowerPrivateRouter.post("/api/private/v1/admin/borrowers", addBorrower);
+borrowerPrivateRouter.post('/api/private/v1/admin/borrowers', addBorrower);
 
 /**
  * @swagger
@@ -80,6 +84,8 @@ borrowerPrivateRouter.post("/api/private/v1/admin/borrowers", addBorrower);
  *         application/json:
  *           schema:
  *             $ref: '#/definitions/BorrowedBook'
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Book added to borrower's list successfully.
@@ -87,8 +93,8 @@ borrowerPrivateRouter.post("/api/private/v1/admin/borrowers", addBorrower);
  *         description: Borrower not found.
  */
 borrowerPrivateRouter.put(
-  "/api/private/v1/admin/borrowers/:borrowerId",
-  addBookToBorrowed
+  '/api/private/v1/admin/borrowers/:borrowerId',
+  addBookToBorrowed,
 );
 
 /**
@@ -103,6 +109,8 @@ borrowerPrivateRouter.put(
  *         description: ID of the borrower to delete.
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Borrower deleted successfully.
@@ -110,8 +118,8 @@ borrowerPrivateRouter.put(
  *         description: Borrower not found.
  */
 borrowerPrivateRouter.delete(
-  "/api/private/v1/admin/borrowers/:borrowerId",
-  deleteBorrower
+  '/api/private/v1/admin/borrowers/:borrowerId',
+  deleteBorrower,
 );
 
 /**
@@ -132,6 +140,8 @@ borrowerPrivateRouter.delete(
  *         description: ID of the book to delete from the borrower's list.
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Borrowed book deleted successfully.
@@ -139,8 +149,8 @@ borrowerPrivateRouter.delete(
  *         description: Borrowed book not found.
  */
 borrowerPrivateRouter.delete(
-  "/api/private/v1/admin/borrowers/:borrowerId/books/:bookId",
-  deleteBorrowedBook
+  '/api/private/v1/admin/borrowers/:borrowerId/books/:bookId',
+  deleteBorrowedBook,
 );
 
 export default borrowerPrivateRouter;

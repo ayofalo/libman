@@ -1,4 +1,4 @@
-import mongoose, { type Document, Schema } from "mongoose";
+import mongoose, { type Document, Schema } from 'mongoose';
 
 interface Book extends Document {
   _id: mongoose.Types.ObjectId;
@@ -8,9 +8,9 @@ interface Book extends Document {
 
 const bookSchema = new Schema<Book>({
   title: { type: String, required: true },
-  authors: [{ type: Schema.Types.ObjectId, ref: "Author", required: true }],
+  authors: [{ type: Schema.Types.ObjectId, ref: 'Author', required: true }],
 });
 
-const Book = mongoose.model<Book>("Book", bookSchema);
+const Book = mongoose.model<Book>('Book', bookSchema);
 
 export { Book };

@@ -1,4 +1,4 @@
-import mongoose, { type Document, Schema } from "mongoose";
+import mongoose, { type Document, Schema } from 'mongoose';
 
 export interface User extends Document {
   id: string;
@@ -13,6 +13,6 @@ const userSchema = new Schema({
   role: { type: String, required: true },
 });
 
-const User = mongoose.model<User>("User", userSchema);
+const User = mongoose.model<User>('User', userSchema);
 
 export { User };

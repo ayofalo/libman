@@ -1,5 +1,5 @@
-import * as mongoose from "mongoose";
-import { type Document, Schema } from "mongoose";
+import * as mongoose from 'mongoose';
+import { type Document, Schema } from 'mongoose';
 
 interface Author extends Document {
   _id: Schema.Types.ObjectId;
@@ -13,6 +13,6 @@ const authorSchema = new Schema<Author>({
 });
 
 //  mongoose model for author
-const Author = mongoose.model<Author>("Author", authorSchema);
+const Author = mongoose.model<Author>('Author', authorSchema);
 
 export { Author };

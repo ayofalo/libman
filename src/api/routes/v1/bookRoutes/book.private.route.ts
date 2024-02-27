@@ -1,13 +1,13 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 // Book Controllers
 
-import { addBook } from "../../../controllers/bookController/addBook";
-import { updateBook } from "../../../controllers/bookController/updateBook";
-import { deleteBook } from "../../../controllers/bookController/deleteBook";
+import { addBook } from '../../../controllers/bookController/addBook';
+import { updateBook } from '../../../controllers/bookController/updateBook';
+import { deleteBook } from '../../../controllers/bookController/deleteBook';
 
 const bookPrivateRouter: Router = express.Router();
 
@@ -28,6 +28,8 @@ const bookPrivateRouter: Router = express.Router();
  *                 type: string
  *               author:
  *                 type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       201:
  *         description: Book created successfully
@@ -37,7 +39,7 @@ const bookPrivateRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-bookPrivateRouter.post("/api/private/v1/admin/books", addBook);
+bookPrivateRouter.post('/api/private/v1/admin/books', addBook);
 
 /**
  * @swagger
@@ -57,6 +59,8 @@ bookPrivateRouter.post("/api/private/v1/admin/books", addBook);
  *         application/json:
  *           schema:
  *             $ref: '#/definitions/Book'
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Book updated successfully.
@@ -64,7 +68,7 @@ bookPrivateRouter.post("/api/private/v1/admin/books", addBook);
  *         description: Book not found.
  */
 
-bookPrivateRouter.put("/api/private/v1/admin/books/:bookId", updateBook);
+bookPrivateRouter.put('/api/private/v1/admin/books/:bookId', updateBook);
 
 /**
  * @swagger
@@ -78,12 +82,14 @@ bookPrivateRouter.put("/api/private/v1/admin/books/:bookId", updateBook);
  *         description: ID of the book to delete.
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Book deleted successfully.
  *       '404':
  *         description: Book not found.
  */
-bookPrivateRouter.delete("/api/private/v1/admin/books/:bookId", deleteBook);
+bookPrivateRouter.delete('/api/private/v1/admin/books/:bookId', deleteBook);
 
 export default bookPrivateRouter;

@@ -1,12 +1,12 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 // Book Controllers
 
-import { retrieveBook } from "../../../controllers/bookController/retrieveBook";
-import { getBooksByAuthorId } from "../../../controllers/bookController/getBooks";
+import { retrieveBook } from '../../../controllers/bookController/retrieveBook';
+import { getBooksByAuthorId } from '../../../controllers/bookController/getBooks';
 
 const bookPublicRouter: Router = express.Router();
 
@@ -29,7 +29,7 @@ const bookPublicRouter: Router = express.Router();
  *         description: Author not found or no books found for the author.
  */
 
-bookPublicRouter.get("/api/public/v1/books/:authorId", getBooksByAuthorId);
+bookPublicRouter.get('/api/public/v1/books/:authorId', getBooksByAuthorId);
 
 /**
  * @swagger
@@ -42,6 +42,6 @@ bookPublicRouter.get("/api/public/v1/books/:authorId", getBooksByAuthorId);
  *       '404':
  *         description: No books found.
  */
-bookPublicRouter.get("/api/public/v1/books", retrieveBook);
+bookPublicRouter.get('/api/public/v1/books', retrieveBook);
 
 export default bookPublicRouter;

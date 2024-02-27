@@ -1,14 +1,14 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Author Controllers
-import { getAuthors } from "../../../controllers/authorController/getAuthors";
-import { addAuthor } from "../../../controllers/authorController/addAuthor";
-import { updateAuthor } from "../../../controllers/authorController/updateAuthor";
-import { deleteAuthor } from "../../../controllers/authorController/deleteAuthor";
+import { getAuthors } from '../../../controllers/authorController/getAuthors';
+import { addAuthor } from '../../../controllers/authorController/addAuthor';
+import { updateAuthor } from '../../../controllers/authorController/updateAuthor';
+import { deleteAuthor } from '../../../controllers/authorController/deleteAuthor';
 
 const authorPrivateRouter: Router = express.Router();
 
@@ -25,6 +25,8 @@ const authorPrivateRouter: Router = express.Router();
  *         description: ID of the author
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       200:
  *         description: Author found and returned successfully
@@ -34,7 +36,7 @@ const authorPrivateRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-authorPrivateRouter.get("/api/private/v1/admin/authors/:id", getAuthors);
+authorPrivateRouter.get('/api/private/v1/admin/authors/:id', getAuthors);
 
 /**
  * @swagger
@@ -51,6 +53,8 @@ authorPrivateRouter.get("/api/private/v1/admin/authors/:id", getAuthors);
  *             properties:
  *               name:
  *                 type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       201:
  *         description: Author created successfully
@@ -59,7 +63,7 @@ authorPrivateRouter.get("/api/private/v1/admin/authors/:id", getAuthors);
  *       500:
  *         description: Internal server error
  */
-authorPrivateRouter.post("/api/private/v1/admin/authors", addAuthor);
+authorPrivateRouter.post('/api/private/v1/admin/authors', addAuthor);
 
 /**
  * @swagger
@@ -79,15 +83,18 @@ authorPrivateRouter.post("/api/private/v1/admin/authors", addAuthor);
  *         application/json:
  *           schema:
  *             $ref: '#/definitions/Author'
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Author updated successfully.
  *       '404':
  *         description: Author not found.
  */
+
 authorPrivateRouter.put(
-  "/api/private/v1/admin/authors/:authorId",
-  updateAuthor
+  '/api/private/v1/admin/authors/:authorId',
+  updateAuthor,
 );
 
 /**
@@ -102,15 +109,22 @@ authorPrivateRouter.put(
  *         description: ID of the author to delete.
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       '200':
  *         description: Author deleted successfully.
  *       '404':
  *         description: Author not found.
+ * securitySchemes:
+ *   BearerAuth:
+ *     type: http
+ *     scheme: bearer
+ *     bearerFormat: JWT  # Specify the format if needed
  */
 authorPrivateRouter.delete(
-  "/api/private/v1/admin/authors/:authorId",
-  deleteAuthor
+  '/api/private/v1/admin/authors/:authorId',
+  deleteAuthor,
 );
 
 export default authorPrivateRouter;

@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
-import { Borrower } from '../../models/Borrowers';
 import { Types } from 'mongoose';
+import { Borrower } from '../../models/Borrowers';
 
 interface BorrowedBook {
   bookId: Types.ObjectId;
@@ -10,8 +10,8 @@ interface BorrowedBook {
 // Add a book to the list of books borrowed by a borrower
 export const addBookToBorrowed = async (req: Request<{ borrowerId: string }, any, { bookId: string }>, res: Response): Promise<void> => {
   try {
-    const borrowerId = req.params.borrowerId;
-    const bookId = req.body.bookId;
+    const { borrowerId } = req.params;
+    const { bookId } = req.body;
 
     // Convert bookId to ObjectId
     const bookObjectId = new Types.ObjectId(bookId);
@@ -19,14 +19,13 @@ export const addBookToBorrowed = async (req: Request<{ borrowerId: string }, any
     // Find the borrower by ID
     const borrower = await Borrower.findById(borrowerId);
 
-    
     if (!borrower) {
       res.status(404).json({ message: 'Borrower not found' });
       return;
     }
 
     // Check if the book is already borrowed by the borrower
-    const existingBookIndex = borrower.bookBorrowed.findIndex(book => book.bookId.equals(bookObjectId));
+    const existingBookIndex = borrower.bookBorrowed.findIndex((book) => book.bookId.equals(bookObjectId));
     if (existingBookIndex !== -1) {
       res.status(400).json({ message: 'Book already borrowed by the borrower' });
       return;

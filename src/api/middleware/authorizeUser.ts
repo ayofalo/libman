@@ -5,12 +5,15 @@ import { type User } from "../models/User";
 
 export function authorizeUser(req: Request, res: Response, next: NextFunction) {
   try {
-    const token = req.cookies.accessToken;
+    const authorizationHeader = (req.headers.Authorization ||
+      req.headers.authorization) as string;
+
+    const [, token] = authorizationHeader.split(" ");
+
     if (!token) {
       return res.sendStatus(403); // Forbidden
     }
 
-    // Decode the JWT token
     const decodedToken = jwt.verify(
       token,
       process.env.ACCESS_TOKEN_SECRET!

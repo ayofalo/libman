@@ -1,9 +1,9 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
-import { addBookToBorrowed } from "../../../controllers/borrowerController/updateBorrower"; // to add books borrowed and delete books borrowed
-import { deleteBorrowedBook } from "../../../controllers/borrowerController/deleteBorrowedBook";
+import { addBookToBorrowed } from '../../../controllers/borrowerController/updateBorrower'; // to add books borrowed and delete books borrowed
+import { deleteBorrowedBook } from '../../../controllers/borrowerController/deleteBorrowedBook';
 
 const borrowerUserRouter: Router = express.Router();
 
@@ -31,7 +31,8 @@ const borrowerUserRouter: Router = express.Router();
  *               type: string
  *             author:
  *               type: string
- *             # Add more properties as needed
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       200:
  *         description: Book added successfully to the borrowed list
@@ -42,8 +43,8 @@ const borrowerUserRouter: Router = express.Router();
  */
 
 borrowerUserRouter.put(
-  "/api/private/v1/borrowers/:borrowerId",
-  addBookToBorrowed
+  '/api/private/v1/borrowers/:borrowerId',
+  addBookToBorrowed,
 );
 
 /**
@@ -65,6 +66,8 @@ borrowerUserRouter.put(
  *         description: ID of the book to be deleted from borrowed list
  *         schema:
  *           type: string
+ *     security:
+ *       - BearerAuth: []  # Apply BearerAuth security scheme
  *     responses:
  *       200:
  *         description: Book deleted successfully from the borrowed list
@@ -75,8 +78,8 @@ borrowerUserRouter.put(
  */
 
 borrowerUserRouter.delete(
-  "/api/private/v1/borrowers/:borrowerId/books/:bookId",
-  deleteBorrowedBook
+  '/api/private/v1/borrowers/:borrowerId/books/:bookId',
+  deleteBorrowedBook,
 );
 
 export default borrowerUserRouter;

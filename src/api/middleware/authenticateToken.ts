@@ -1,46 +1,50 @@
-import { type Request, type Response, type NextFunction } from 'express'
-import * as jwt from 'jsonwebtoken'
+import { type Request, type Response, type NextFunction } from 'express';
+import * as jwt from 'jsonwebtoken';
 
-// Define the User interface
+// User interface
 interface User {
-  id: string
-  email: string
-  // Add more fields as needed
+  id: string;
+  email: string;
 }
 
-// Extend the existing Request interface to include the 'user' property
+// Extended the existing Request interface to include the 'user' property
 declare global {
   namespace Express {
     interface Request {
-      user?: User
+      user?: User;
     }
   }
 }
 
-// Define an interface that extends the Request interface to include the custom property
+// Defined an interface that extends the Request interface to include the custom property
 interface AuthenticatedRequest extends Request {
-  authenticatedUserId?: string // Define the custom property and its type
+  authenticatedUserId?: string;
 }
 
-const authenticateUser = (req: AuthenticatedRequest, res: Response, next: NextFunction) => {
-  const token = req.cookies.accessToken // The JWT is stored in the 'token' cookie
+const authenticateUser = (
+  req: AuthenticatedRequest,
+  res: Response,
+  next: NextFunction,
+) => {
+  const authorizationHeader = (req.headers.Authorization
+    || req.headers.authorization) as string; // Bearer <Token>
+  const [, token] = authorizationHeader.split(' ');
 
   if (!token) {
-    return res.status(401).send('Unauthorized- No token')
+    return res.status(401).send('Unauthorized- No token');
   }
 
   try {
     // Verify the token
-    const decoded: any = jwt.verify(token, process.env.JWT_SECRET!)
+    const decoded: any = jwt.verify(token as string, process.env.JWT_SECRET!);
 
     // Attach the user ID to the request for further use
-    req.authenticatedUserId = decoded.userId
+    req.authenticatedUserId = decoded.userId;
 
-    next() // Add a return statement here
+    next();
   } catch (error) {
-    // console.error(error);
-    return res.status(401).send('Unauthorized')
+    return res.status(401).send('Unauthorized');
   }
-}
+};
 
-export default authenticateUser
+export default authenticateUser;
