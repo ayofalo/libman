@@ -175,7 +175,7 @@ npm run test
 ```
 ### Serverless deployment
 
-Used AWS Lambda and API Gateway for serverless deployment,
+Used AWS Lambda and API Gateway for serverless deployment.
 
 For serverless deployment, the express application was wrapped in serverless provided by the 'serverless-http' from npm.
 To deploy the application using serverless framework follow the steps 
