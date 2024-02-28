@@ -120,6 +120,8 @@ Create a file called `.env` in express-backend folder of the project with the en
 
 To run your test environment, create a file called  `.env.test` and input the code below in the file 
 
+Note ACCESS_TOKEN_SECRET and JWT_SECRET should be the same string.
+
 ```bash
 
 MONGO_URI="KEY FOR Test DB"
