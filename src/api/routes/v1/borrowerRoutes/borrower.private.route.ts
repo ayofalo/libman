@@ -1,16 +1,16 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Borrower Controllers
 
-import { getBorrowers } from "../../../controllers/borrowerController/getBorrowers";
-import { addBorrower } from "../../../controllers/borrowerController/addBorrower";
-import { addBookToBorrowed } from "../../../controllers/borrowerController/updateBorrower"; // to add books borrowed and delete books borrowed
-import { deleteBorrowedBook } from "../../../controllers/borrowerController/deleteBorrowedBook";
-import { deleteBorrower } from "../../../controllers/borrowerController/deleteBorrower";
+import { getBorrowers } from '../../../controllers/borrowerController/getBorrowers';
+import { addBorrower } from '../../../controllers/borrowerController/addBorrower';
+import { addBookToBorrowed } from '../../../controllers/borrowerController/updateBorrower'; // to add books borrowed and delete books borrowed
+import { deleteBorrowedBook } from '../../../controllers/borrowerController/deleteBorrowedBook';
+import { deleteBorrower } from '../../../controllers/borrowerController/deleteBorrower';
 
 const borrowerPrivateRouter: Router = express.Router();
 
@@ -37,7 +37,7 @@ const borrowerPrivateRouter: Router = express.Router();
  *       500:
  *         description: Internal server error
  */
-borrowerPrivateRouter.get("/:id", getBorrowers);
+borrowerPrivateRouter.get('/:id', getBorrowers);
 
 /**
  * @swagger
@@ -64,7 +64,7 @@ borrowerPrivateRouter.get("/:id", getBorrowers);
  *       500:
  *         description: Internal server error
  */
-borrowerPrivateRouter.post("/", addBorrower);
+borrowerPrivateRouter.post('/', addBorrower);
 
 /**
  * @swagger
@@ -92,7 +92,7 @@ borrowerPrivateRouter.post("/", addBorrower);
  *       '404':
  *         description: Borrower not found.
  */
-borrowerPrivateRouter.put("/:borrowerId", addBookToBorrowed);
+borrowerPrivateRouter.put('/:borrowerId', addBookToBorrowed);
 
 /**
  * @swagger
@@ -114,7 +114,7 @@ borrowerPrivateRouter.put("/:borrowerId", addBookToBorrowed);
  *       '404':
  *         description: Borrower not found.
  */
-borrowerPrivateRouter.delete("/:borrowerId", deleteBorrower);
+borrowerPrivateRouter.delete('/:borrowerId', deleteBorrower);
 
 /**
  * @swagger
@@ -142,6 +142,6 @@ borrowerPrivateRouter.delete("/:borrowerId", deleteBorrower);
  *       '404':
  *         description: Borrowed book not found.
  */
-borrowerPrivateRouter.delete("/:borrowerId/books/:bookId", deleteBorrowedBook);
+borrowerPrivateRouter.delete('/:borrowerId/books/:bookId', deleteBorrowedBook);
 
 export default borrowerPrivateRouter;

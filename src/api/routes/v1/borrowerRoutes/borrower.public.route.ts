@@ -1,13 +1,13 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Borrower Controllers
 
-import { retrieveBorrowers } from "../../../controllers/borrowerController/retrieveBorrower";
-import { getBorrowedBooksByBorrower } from "../../../controllers/borrowerController/getBorrowedBooksByBorrower";
+import { retrieveBorrowers } from '../../../controllers/borrowerController/retrieveBorrower';
+import { getBorrowedBooksByBorrower } from '../../../controllers/borrowerController/getBorrowedBooksByBorrower';
 
 const borrowerPublicRouter: Router = express.Router();
 
@@ -37,7 +37,7 @@ const borrowerPublicRouter: Router = express.Router();
  *       '404':
  *         description: No borrowers found.
  */
-borrowerPublicRouter.get("/", retrieveBorrowers);
+borrowerPublicRouter.get('/', retrieveBorrowers);
 
 /**
  * @swagger
@@ -59,8 +59,8 @@ borrowerPublicRouter.get("/", retrieveBorrowers);
  */
 
 borrowerPublicRouter.get(
-  "/:borrowerId/borrowed-books",
-  getBorrowedBooksByBorrower
+  '/:borrowerId/borrowed-books',
+  getBorrowedBooksByBorrower,
 );
 
 export default borrowerPublicRouter;

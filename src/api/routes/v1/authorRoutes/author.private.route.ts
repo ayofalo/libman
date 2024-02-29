@@ -1,14 +1,14 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Author Controllers
-import { getAuthors } from "../../../controllers/authorController/getAuthors";
-import { addAuthor } from "../../../controllers/authorController/addAuthor";
-import { updateAuthor } from "../../../controllers/authorController/updateAuthor";
-import { deleteAuthor } from "../../../controllers/authorController/deleteAuthor";
+import { getAuthors } from '../../../controllers/authorController/getAuthors';
+import { addAuthor } from '../../../controllers/authorController/addAuthor';
+import { updateAuthor } from '../../../controllers/authorController/updateAuthor';
+import { deleteAuthor } from '../../../controllers/authorController/deleteAuthor';
 
 const authorPrivateRouter: Router = express.Router();
 
@@ -36,7 +36,7 @@ const authorPrivateRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-authorPrivateRouter.get("/:id", getAuthors);
+authorPrivateRouter.get('/:id', getAuthors);
 
 /**
  * @swagger
@@ -63,7 +63,7 @@ authorPrivateRouter.get("/:id", getAuthors);
  *       500:
  *         description: Internal server error
  */
-authorPrivateRouter.post("/", addAuthor);
+authorPrivateRouter.post('/', addAuthor);
 
 /**
  * @swagger
@@ -92,7 +92,7 @@ authorPrivateRouter.post("/", addAuthor);
  *         description: Author not found.
  */
 
-authorPrivateRouter.put("/:authorId", updateAuthor);
+authorPrivateRouter.put('/:authorId', updateAuthor);
 
 /**
  * @swagger
@@ -119,6 +119,6 @@ authorPrivateRouter.put("/:authorId", updateAuthor);
  *     scheme: bearer
  *     bearerFormat: JWT  # Specify the format if needed
  */
-authorPrivateRouter.delete("/:authorId", deleteAuthor);
+authorPrivateRouter.delete('/:authorId', deleteAuthor);
 
 export default authorPrivateRouter;

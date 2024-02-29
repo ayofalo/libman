@@ -1,12 +1,12 @@
-import express = require("express");
+import express = require('express');
 
-import { type Router } from "express";
+import { type Router } from 'express';
 
 // Import Controllers
 
 // Author Controllers
-import { getAuthors } from "../../../controllers/authorController/getAuthors";
-import { retrieveAuthor } from "../../../controllers/authorController/retrieveAuthor";
+import { getAuthors } from '../../../controllers/authorController/getAuthors';
+import { retrieveAuthor } from '../../../controllers/authorController/retrieveAuthor';
 
 const authorPublicRouter: Router = express.Router();
 
@@ -32,7 +32,7 @@ const authorPublicRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-authorPublicRouter.get("/:id", getAuthors);
+authorPublicRouter.get('/:id', getAuthors);
 
 /**
  * @swagger
@@ -61,6 +61,6 @@ authorPublicRouter.get("/:id", getAuthors);
  *         description: No authors found.
  */
 
-authorPublicRouter.get("/", retrieveAuthor);
+authorPublicRouter.get('/', retrieveAuthor);
 
 export default authorPublicRouter;
