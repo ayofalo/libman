@@ -12,7 +12,7 @@
     "lint:fix": "eslint --fix . --ext .ts,.tsx",
     "test": "NODE_ENV=test jest"
   },
-  "author": "Ayodele",
+  "author": "Ayodele Falowo",
   "license": "MIT",
   "dependencies": {
     "@jest/globals": "^29.7.0",
