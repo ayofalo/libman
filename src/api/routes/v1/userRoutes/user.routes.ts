@@ -1,11 +1,11 @@
-import express = require('express');
+import express = require("express");
 
-import { type Router } from 'express';
+import { type Router } from "express";
 
 import {
   registerUser,
   login,
-} from '../../../controllers/userController/userController';
+} from "../../../controllers/userController/userController";
 
 const userRouter: Router = express.Router();
 
@@ -34,7 +34,7 @@ const userRouter: Router = express.Router();
  *       '401':
  *         description: Invalid credentials or user not found.
  */
-userRouter.post('/api/auth/v1/login', login);
+userRouter.post("/login", login);
 /**
  * @swagger
  * /api/auth/v1/register:
@@ -64,6 +64,6 @@ userRouter.post('/api/auth/v1/login', login);
  *         description: Email already exists or invalid input.
  */
 
-userRouter.post('/api/auth/v1/register', registerUser);
+userRouter.post("/register", registerUser);
 
 export default userRouter;

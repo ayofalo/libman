@@ -1,13 +1,13 @@
-import express = require('express');
+import express = require("express");
 
-import { type Router } from 'express';
+import { type Router } from "express";
 
 // Import Controllers
 // Book Controllers
 
-import { addBook } from '../../../controllers/bookController/addBook';
-import { updateBook } from '../../../controllers/bookController/updateBook';
-import { deleteBook } from '../../../controllers/bookController/deleteBook';
+import { addBook } from "../../../controllers/bookController/addBook";
+import { updateBook } from "../../../controllers/bookController/updateBook";
+import { deleteBook } from "../../../controllers/bookController/deleteBook";
 
 const bookPrivateRouter: Router = express.Router();
 
@@ -39,7 +39,7 @@ const bookPrivateRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-bookPrivateRouter.post('/api/private/v1/admin/books', addBook);
+bookPrivateRouter.post("/", addBook);
 
 /**
  * @swagger
@@ -68,7 +68,7 @@ bookPrivateRouter.post('/api/private/v1/admin/books', addBook);
  *         description: Book not found.
  */
 
-bookPrivateRouter.put('/api/private/v1/admin/books/:bookId', updateBook);
+bookPrivateRouter.put("/:bookId", updateBook);
 
 /**
  * @swagger
@@ -90,6 +90,6 @@ bookPrivateRouter.put('/api/private/v1/admin/books/:bookId', updateBook);
  *       '404':
  *         description: Book not found.
  */
-bookPrivateRouter.delete('/api/private/v1/admin/books/:bookId', deleteBook);
+bookPrivateRouter.delete("/:bookId", deleteBook);
 
 export default bookPrivateRouter;

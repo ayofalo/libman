@@ -1,9 +1,9 @@
-import express = require('express');
+import express = require("express");
 
-import { type Router } from 'express';
+import { type Router } from "express";
 
-import { addBookToBorrowed } from '../../../controllers/borrowerController/updateBorrower'; // to add books borrowed and delete books borrowed
-import { deleteBorrowedBook } from '../../../controllers/borrowerController/deleteBorrowedBook';
+import { addBookToBorrowed } from "../../../controllers/borrowerController/updateBorrower"; // to add books borrowed and delete books borrowed
+import { deleteBorrowedBook } from "../../../controllers/borrowerController/deleteBorrowedBook";
 
 const borrowerUserRouter: Router = express.Router();
 
@@ -42,10 +42,7 @@ const borrowerUserRouter: Router = express.Router();
  *         description: Internal server error
  */
 
-borrowerUserRouter.put(
-  '/api/private/v1/borrowers/:borrowerId',
-  addBookToBorrowed,
-);
+borrowerUserRouter.put("/:borrowerId", addBookToBorrowed);
 
 /**
  * @swagger
@@ -77,9 +74,6 @@ borrowerUserRouter.put(
  *         description: Internal server error
  */
 
-borrowerUserRouter.delete(
-  '/api/private/v1/borrowers/:borrowerId/books/:bookId',
-  deleteBorrowedBook,
-);
+borrowerUserRouter.delete("/:borrowerId/books/:bookId", deleteBorrowedBook);
 
 export default borrowerUserRouter;
