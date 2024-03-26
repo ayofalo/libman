@@ -169,7 +169,7 @@ This should be done from the root directory
 
 ### Running Tests
 
-To run tests, ensure you have created your test .env file with the details mentioned above. Once successfully dont use the command below 
+To run tests, ensure you have created your test .env file with the details mentioned above. use the command below 
 to run your test 
 
 ```bash
